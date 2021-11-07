@@ -4,9 +4,42 @@
 
 <main id="content" role="main">
 
-	<p class="govuk-body govuk-!-margin-top-6">These are all the things we're doing.</p>
+	<div class="govuk-breadcrumbs">
+		<ol class="govuk-breadcrumbs__list">
+			<li class="govuk-breadcrumbs__list-item">
+				<a class="govuk-breadcrumbs__link" href="#">Home</a>
+			</li>
+			<li class="govuk-breadcrumbs__list-item">
+				<a class="govuk-breadcrumbs__link" href="/">Prisons</a>
+			</li>
+		</ol>
+	</div>
 
-	<p class="govuk-body-xs govuk-!-margin-top-9">Last updated 30th June 2020.<p>
+	<table class="govuk-table">
+		<caption class="govuk-table__caption govuk-table__caption--m">Workforce planning</caption>
+		<thead class="govuk-table__head">
+		  <tr class="govuk-table__row">
+			<th scope="col" class="govuk-table__header">Team</th>
+			<th scope="col" class="govuk-table__header">Service area</th>
+			<th scope="col" class="govuk-table__header">Department</th>
+			<th scope="col" class="govuk-table__header">Vacancies</th>
+		  </tr>
+		</thead>
+		<tbody class="govuk-table__body">
+			{% for team in teams %}
+				<tr class="govuk-table__row">
+					<th scope="row" class="govuk-table__header"><a href="/team" title="{{ team.teamName }}">{{ team.teamName }}</a></th>
+					<td class="govuk-table__cell"><a href="/service-area" title="{{ team.serviceArea }}">{{ team.serviceArea }}</a></td>
+					<td class="govuk-table__cell"><a href="#" title="{{ team.department }}">{{ team.department }}</a></td>
+					<td class="govuk-table__cell">
+						<strong class="govuk-tag {{ team.vacancies | replace(0, 'govuk-tag--green') | replace(1, 'govuk-tag--green') | replace(2, 'govuk-tag--yellow') | replace(3, 'govuk-tag--orange') | replace(4, 'govuk-tag--red') | replace(5, 'govuk-tag--red') }} ">
+							{{ team.vacancies }}
+						</strong>
+					</td>
+				</tr> 
+			{% endfor %}
+		</tbody>
+	  </table>
 
 </main>
 

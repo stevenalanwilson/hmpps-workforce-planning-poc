@@ -6,6 +6,8 @@ const logger = require('morgan');
 const nunjucks = require('nunjucks');
 
 const indexRouter = require('./routes/index');
+const serviceAreaRouter = require('./routes/servicearea');
+const teamRouter = require('./routes/team');
 
 const app = express();
 
@@ -36,6 +38,8 @@ app.use('/govuk-frontend', express.static(path.join(__dirname, '../node_modules/
 app.use('/assets', express.static(path.join(__dirname, '../node_modules/govuk-frontend/govuk/assets')));
 
 app.use('/', indexRouter);
+app.use('/', serviceAreaRouter);
+app.use('/', teamRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
