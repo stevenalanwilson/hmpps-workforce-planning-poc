@@ -2,61 +2,150 @@
 
 {% block content %}
 
+<div class="govuk-breadcrumbs">
+	<ol class="govuk-breadcrumbs__list">
+		<li class="govuk-breadcrumbs__list-item">
+			<a class="govuk-breadcrumbs__link" href="#">Home</a>
+		</li>
+		<li class="govuk-breadcrumbs__list-item">
+			<a class="govuk-breadcrumbs__link" href="/">Prisons</a>
+		</li>
+		<li class="govuk-breadcrumbs__list-item">
+			<a class="govuk-breadcrumbs__link" href="service-area">Enablers</a>
+		</li>
+	</ol>
+</div>
+
+<h1 class="govuk-heading-xl">
+	HMPPS Workforce Management
+</h1>
+
 <main id="content" role="main">
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-full">
+
+			<div class="govuk-tabs" data-module="govuk-tabs">
+				<ul class="govuk-tabs__list">
+				  <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+					<a class="govuk-tabs__tab" href="#past-day">
+						Enablers
+					</a>
+				  </li>
+				  <li class="govuk-tabs__list-item">
+					<a class="govuk-tabs__tab" href="#past-week">
+						Entering & Leaving Prison
+					</a>
+				  </li>
+				  <li class="govuk-tabs__list-item">
+					<a class="govuk-tabs__tab" href="#past-week">
+						Manage a Secure Estate
+					</a>
+				  </li>
+				  <li class="govuk-tabs__list-item">
+					<a class="govuk-tabs__tab" href="#past-week">
+						Supporting Prisoner Wellbeing
+					</a>
+				  </li>
+				</ul>
+				<div class="govuk-tabs__panel" id="past-day">
+					
+				  <h2 class="govuk-heading-l">Enablers Service Area Vacancies</h2>
+				 
+				  <dl class="govuk-summary-list">
+					<div class="govuk-summary-list__row">
+					  <dt class="govuk-summary-list__key">
+						Department
+					  </dt>
+					  <dd class="govuk-summary-list__value">
+						Prisons
+					  </dd>
+					</div>
+					<div class="govuk-summary-list__row">
+						<dt class="govuk-summary-list__key">
+						  Service Area
+						</dt>
+						<dd class="govuk-summary-list__value">
+						  Enablers
+						</dd>
+					  </div>
+					<div class="govuk-summary-list__row">
+					  <dt class="govuk-summary-list__key">
+						Deputy Director
+					  </dt>
+					  <dd class="govuk-summary-list__value">
+						Sophie Otter
+					  </dd>
+					</div>
+					<div class="govuk-summary-list__row">
+					  <dt class="govuk-summary-list__key">
+						Finiance Businss Partner
+					  </dt>
+					  <dd class="govuk-summary-list__value">
+						Nicki Stowe
+					  </dd>
+					</div>
+					<div class="govuk-summary-list__row">
+						<dt class="govuk-summary-list__key">
+						  Service Owner
+						</dt>
+						<dd class="govuk-summary-list__value">
+						  Jess Morrow
+						</dd>
+					  </div>
+				  </dl>
+
+				  <h2 class="govuk-heading-m">Current Vacancies</h2>
+
+				  
+				  <table class="govuk-table">
+					<thead class="govuk-table__head">
+					  <tr class="govuk-table__row">
+						<th scope="col" class="govuk-table__header">Role</th>
+						<th scope="col" class="govuk-table__header">Level</th>
+						<th scope="col" class="govuk-table__header">Type</th>
+						<th scope="col" class="govuk-table__header">Status</th>
+						<th scope="col" class="govuk-table__header">Stage</th>
+						<th scope="col" class="govuk-table__header">Role code</th>
+						<th scope="col" class="govuk-table__header">Team</th>
+					  </tr>
+					</thead>
+					<tbody class="govuk-table__body">
+						{% for role in roles %}
+							<tr class="govuk-table__row">
+								<th scope="row" class="govuk-table__header">{{ role.role }}</th>
+								<td class="govuk-table__cell">{{ role.level }}</td>
+								<td class="govuk-table__cell">
+									<strong class="govuk-tag {{ role.type | replace(0, 'govuk-tag') | replace(1, 'govuk-tag--grey') }} ">
+										{{ role.type | replace(0, 'New') | replace(1, 'Current') }}
+									</strong>
+								</td>
+								<td class="govuk-table__cell">
+									<strong class="govuk-tag {{ role.status | replace(0, 'govuk-tag--green')  | replace(1, 'govuk-tag--orange') | replace(2, 'govuk-tag--red') }}">
+										{{ role.status | replace(0, 'OK')  | replace(1, 'Due') | replace(2, 'Urgent') }}
+									</strong>
+								</td>
+								<td class="govuk-table__cell"><a href="{{ role.stage.url }}" title="{{ role.stage.title }}" class="govuk-link govuk-link--no-visited-state">{{ role.stage.title }}</a></td>
+								<td class="govuk-table__cell">{{ role.roleCode }}</td>
+								<td class="govuk-table__cell"><a href="team" title="{{ role.team }}" class="govuk-link govuk-link--no-visited-state">{{ role.team }}</a></td>
+							</tr>	
+						  {% endfor %} 
+					</tbody>
+				  </table>
+			  
+				</div>
+				<div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-week">
+				  <h2 class="govuk-heading-l">Past week</h2>
+				  
+			  
+				</div>
+			</div>
+
+
+
 	
-
-	<div class="govuk-breadcrumbs">
-		<ol class="govuk-breadcrumbs__list">
-			<li class="govuk-breadcrumbs__list-item">
-				<a class="govuk-breadcrumbs__link" href="#">Home</a>
-			</li>
-			<li class="govuk-breadcrumbs__list-item">
-				<a class="govuk-breadcrumbs__link" href="/">Prisons</a>
-			</li>
-			<li class="govuk-breadcrumbs__list-item">
-				<a class="govuk-breadcrumbs__link" href="service-area">Enablers</a>
-			</li>
-		</ol>
-	</div>
-
-	<h1 class="govuk-heading-l">{{ department }}: {{ serviceArea }}</h1>
-
-	<table class="govuk-table">
-		<caption class="govuk-table__caption govuk-table__caption--m">Workforce planning</caption>
-		<thead class="govuk-table__head">
-		  <tr class="govuk-table__row">
-			<th scope="col" class="govuk-table__header">Role</th>
-			<th scope="col" class="govuk-table__header">Level</th>
-			<th scope="col" class="govuk-table__header">Type</th>
-			<th scope="col" class="govuk-table__header">Status</th>
-			<th scope="col" class="govuk-table__header">Stage</th>
-			<th scope="col" class="govuk-table__header">Role code</th>
-			<th scope="col" class="govuk-table__header">Team</th>
-		  </tr>
-		</thead>
-		<tbody class="govuk-table__body">
-			{% for role in roles %}
-				<tr class="govuk-table__row">
-					<th scope="row" class="govuk-table__header">{{ role.role }}</th>
-					<td class="govuk-table__cell">{{ role.level }}</td>
-					<td class="govuk-table__cell">
-						<strong class="govuk-tag {{ role.type | replace(0, 'govuk-tag') | replace(1, 'govuk-tag--grey') }} ">
-							{{ role.type | replace(0, 'New') | replace(1, 'Current') }}
-						</strong>
-					</td>
-					<td class="govuk-table__cell">
-						<strong class="govuk-tag {{ role.status | replace(0, 'govuk-tag--green')  | replace(1, 'govuk-tag--orange') | replace(2, 'govuk-tag--red') }}">
-							{{ role.status | replace(0, 'OK')  | replace(1, 'Due') | replace(2, 'Urgent') }}
-						</strong>
-					</td>
-					<td class="govuk-table__cell">{{ role.stage }}</td>
-					<td class="govuk-table__cell">{{ role.roleCode }}</td>
-					<td class="govuk-table__cell"><a href="team" title="{{ role.team }}">{{ role.team }}</a></td>
-				</tr>	
-		  	{% endfor %} 
-		</tbody>
-	  </table>
-
+</div>
+</div>
 </main>
 
 {% endblock %}

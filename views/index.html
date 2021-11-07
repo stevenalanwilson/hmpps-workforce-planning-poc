@@ -2,44 +2,107 @@
 
 {% block content %}
 
+<div class="govuk-breadcrumbs">
+	<ol class="govuk-breadcrumbs__list">
+		<li class="govuk-breadcrumbs__list-item">
+			<a class="govuk-breadcrumbs__link" href="#">Home</a>
+		</li>
+		<li class="govuk-breadcrumbs__list-item">
+			<a class="govuk-breadcrumbs__link" href="/">Prisons</a>
+		</li>
+	</ol>
+</div>
+
+<h1 class="govuk-heading-xl">
+	HMPPS Workforce Management
+</h1>
+
 <main id="content" role="main">
 
-	<div class="govuk-breadcrumbs">
-		<ol class="govuk-breadcrumbs__list">
-			<li class="govuk-breadcrumbs__list-item">
-				<a class="govuk-breadcrumbs__link" href="#">Home</a>
-			</li>
-			<li class="govuk-breadcrumbs__list-item">
-				<a class="govuk-breadcrumbs__link" href="/">Prisons</a>
-			</li>
-		</ol>
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-full">
+			
+			<div class="govuk-tabs" data-module="govuk-tabs">
+				<ul class="govuk-tabs__list">
+				  <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+					<a class="govuk-tabs__tab" href="#past-day">
+						Prison Vacancies
+					</a>
+				  </li>
+				  <li class="govuk-tabs__list-item">
+					<a class="govuk-tabs__tab" href="#past-week">
+						Probation Vacancies
+					</a>
+				  </li>
+				</ul>
+				<div class="govuk-tabs__panel" id="past-day">
+					
+				  <h2 class="govuk-heading-l">Prison Vacancies</h2>
+				 
+				  <dl class="govuk-summary-list">
+					<div class="govuk-summary-list__row">
+					  <dt class="govuk-summary-list__key">
+						Department
+					  </dt>
+					  <dd class="govuk-summary-list__value">
+						Prisons
+					  </dd>
+					</div>
+					<div class="govuk-summary-list__row">
+					  <dt class="govuk-summary-list__key">
+						Deputy Director
+					  </dt>
+					  <dd class="govuk-summary-list__value">
+						Sophie Otter
+					  </dd>
+					</div>
+					<div class="govuk-summary-list__row">
+					  <dt class="govuk-summary-list__key">
+						Finiance Businss Partner
+					  </dt>
+					  <dd class="govuk-summary-list__value">
+						Nicki Stowe
+					  </dd>
+					</div>
+				  </dl>
+
+				  <table class="govuk-table">
+					<thead class="govuk-table__head">
+					  <tr class="govuk-table__row">
+						<th scope="col" class="govuk-table__header">Team</th>
+						<th scope="col" class="govuk-table__header">Service area</th>
+						<th scope="col" class="govuk-table__header">Department</th>
+						<th scope="col" class="govuk-table__header">Vacancies</th>
+					  </tr>
+					</thead>
+					<tbody class="govuk-table__body">
+						{% for team in teams %}
+							<tr class="govuk-table__row">
+								<th scope="row" class="govuk-table__header"><a href="/team" title="{{ team.teamName }}" class="govuk-link govuk-link--no-visited-state">{{ team.teamName }}</a></th>
+								<td class="govuk-table__cell"><a href="/service-area" title="{{ team.serviceArea }}" class="govuk-link govuk-link--no-visited-state">{{ team.serviceArea }}</a></td>
+								<td class="govuk-table__cell"><a href="#" title="{{ team.department }}" class="govuk-link govuk-link--no-visited-state">{{ team.department }}</a></td>
+								<td class="govuk-table__cell">
+									<strong class="govuk-tag {{ team.vacancies | replace(0, 'govuk-tag--green') | replace(1, 'govuk-tag--green') | replace(2, 'govuk-tag--yellow') | replace(3, 'govuk-tag--orange') | replace(4, 'govuk-tag--red') | replace(5, 'govuk-tag--red') }} ">
+										{{ team.vacancies }}
+									</strong>
+								</td>
+							</tr> 
+						{% endfor %}
+					</tbody>
+				  </table>
+			  
+				</div>
+				<div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-week">
+				  <h2 class="govuk-heading-l">Past week</h2>
+				  
+			  
+				</div>
+			</div>
+
+		</div>
 	</div>
 
-	<table class="govuk-table">
-		<caption class="govuk-table__caption govuk-table__caption--m">Workforce planning</caption>
-		<thead class="govuk-table__head">
-		  <tr class="govuk-table__row">
-			<th scope="col" class="govuk-table__header">Team</th>
-			<th scope="col" class="govuk-table__header">Service area</th>
-			<th scope="col" class="govuk-table__header">Department</th>
-			<th scope="col" class="govuk-table__header">Vacancies</th>
-		  </tr>
-		</thead>
-		<tbody class="govuk-table__body">
-			{% for team in teams %}
-				<tr class="govuk-table__row">
-					<th scope="row" class="govuk-table__header"><a href="/team" title="{{ team.teamName }}">{{ team.teamName }}</a></th>
-					<td class="govuk-table__cell"><a href="/service-area" title="{{ team.serviceArea }}">{{ team.serviceArea }}</a></td>
-					<td class="govuk-table__cell"><a href="#" title="{{ team.department }}">{{ team.department }}</a></td>
-					<td class="govuk-table__cell">
-						<strong class="govuk-tag {{ team.vacancies | replace(0, 'govuk-tag--green') | replace(1, 'govuk-tag--green') | replace(2, 'govuk-tag--yellow') | replace(3, 'govuk-tag--orange') | replace(4, 'govuk-tag--red') | replace(5, 'govuk-tag--red') }} ">
-							{{ team.vacancies }}
-						</strong>
-					</td>
-				</tr> 
-			{% endfor %}
-		</tbody>
-	  </table>
+	
 
 </main>
 

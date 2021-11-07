@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="govuk-breadcrumbs">
+	<ol class="govuk-breadcrumbs__list">
+		<li class="govuk-breadcrumbs__list-item">
+			<a class="govuk-breadcrumbs__link" href="#">Home</a>
+		</li>
+		<li class="govuk-breadcrumbs__list-item">
+			<a class="govuk-breadcrumbs__link" href="/">Prisons</a>
+		</li>
+		<li class="govuk-breadcrumbs__list-item">
+			<a class="govuk-breadcrumbs__link" href="service-area">Enablers</a>
+		</li>
+		<li class="govuk-breadcrumbs__list-item">
+			<a class="govuk-breadcrumbs__link" href="team">{{ team }}</a>
+		</li>
+		<li class="govuk-breadcrumbs__list-item">
+			<a class="govuk-breadcrumbs__link" href="#">Developer</a>
+		</li>
+		<li class="govuk-breadcrumbs__list-item">
+			<a class="govuk-breadcrumbs__link" href="#">Status</a>
+		</li>
+	</ol>
+</div>
+
+<h1 class="govuk-heading-xl">
+	HMPPS Workforce Management
+</h1>
+
+<main id="content" role="main">
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-two-thirds">
+			<h2 class="govuk-heading-l">Senior Developer</h2>
+			<ol class="app-task-list">
+				<li>
+				<h2 class="app-task-list__section">
+					Renewal
+				</h2>
+				<ul class="app-task-list__items">
+					<li class="app-task-list__item">
+					<span class="app-task-list__task-name">
+						Renewal Business Case written
+					</span>
+					<strong class="govuk-tag app-task-list__tag" id="eligibility-status">Completed</strong>
+					</li>
+					<li class="app-task-list__item">
+					<span class="app-task-list__task-name">
+						Renewal Business Case Submitted
+					</span>
+					<strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="list-convictions-status">Not started</strong>
+					</li>
+					<li class="app-task-list__item">
+						<span class="app-task-list__task-name">
+							Renewal Business Case Approved
+						</span>
+						<strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="list-convictions-status">Not started</strong>
+					</li>
+				</ul>
+				</li>
+			</ol>
+		</div>
+		<div class="govuk-grid-column-one-third">
+			<h2 class="govuk-heading-l">Role Details</h2>	
+			<ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+				<li>
+					<strong class="govuk-tag govuk-tag--red">
+						Last Renewal
+				  	</strong>
+				</li>
+				<li><strong>Department</strong>: Prisons</li>
+				<li><strong>Service Area</strong>: Enablers</li>
+				<li><strong>Team</strong>: Money To Prisoners</li>
+				<li><strong>Deputy Director</strong>: Sophie Otter</li>
+				<li><strong>Finiance Businss Partner</strong>: Nicki Stowe</li>
+				<li><strong>Service Owner</strong>: Jess Morrow</li>
+				<li><strong>Product Manager</strong>: Rose Faulkner</li>
+				<li><strong>Profession Lead</strong>: Steven Wilson</li>
+				<li><strong>People Team Lead</strong>: Anne Fox</li>
+			</ul>
+		</div>
+	  </div>
+
+</main>
+
+{% endblock %}

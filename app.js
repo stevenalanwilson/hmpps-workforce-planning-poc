@@ -8,6 +8,7 @@ const nunjucks = require('nunjucks');
 const indexRouter = require('./routes/index');
 const serviceAreaRouter = require('./routes/servicearea');
 const teamRouter = require('./routes/team');
+const stageRouter = require('./routes/stages');
 
 const app = express();
 
@@ -40,6 +41,7 @@ app.use('/assets', express.static(path.join(__dirname, '../node_modules/govuk-fr
 app.use('/', indexRouter);
 app.use('/', serviceAreaRouter);
 app.use('/', teamRouter);
+app.use('/', stageRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
